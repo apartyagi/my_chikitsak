@@ -1,6 +1,6 @@
 "use strict";
 import express from "express";
-import UserController from "../controllers/userController";
+import UserController from "../controllers/userController.mjs";
 var userRoute=express.Router();
 
 

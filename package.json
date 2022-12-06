@@ -2,10 +2,10 @@
   "name": "your_chikitshak",
   "version": "1.0.0",
   "type": "module",
-  "main": "Main.js",
+  "main": "Main.mjs",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node Main.js"
+    "start": "node Main.mjs"
   },
   "dependencies": {
     "dotenv": "^16.0.3",

@@ -1,8 +1,8 @@
 import express from 'express';
-import userRoute from './src/app/routes/userRoutes';
-import "./src/config/mongodb";
+import userRoute from './src/app/routes/userRoutes.mjs';
+import "./src/config/mongodb.mjs";
 const app=express();
-const port =process.env.PORT || 3000;
+const port =process.env.PORT || 3001;
 
 
 app.use(express.json());

@@ -1,8 +1,8 @@
-import userModel from "../models/UserEntity";
-import categoryModel from "../models/CategoriesEntity";
+import userModel from "../models/UserEntity.mjs";
+import categoryModel from "../models/CategoriesEntity.mjs";
 import mongoose from "mongoose";
-import review from "../temp/temp";
-import doctorModel from "../models/DoctorEntity";
+import review from "../temp/temp.mjs";
+import doctorModel from "../models/DoctorEntity.mjs";
 
 class UserService{
 

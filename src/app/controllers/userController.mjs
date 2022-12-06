@@ -1,5 +1,5 @@
-import userService from "../services/userService";
-import {error, success, validation} from '../../config/apiResponse';
+import userService from "../services/userService.mjs";
+import {error, success, validation} from '../../config/apiResponse.mjs';
 
 class UserController{
  
