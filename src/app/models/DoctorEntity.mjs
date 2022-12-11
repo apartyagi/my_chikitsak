@@ -12,7 +12,23 @@ const doctorSchema=mongoose.Schema({
       type:Boolean,  
     },
     name:String,
-    dob:String,
+    email:String,
+    address:String,
+    mciNo:String,
+    aadharNo:String,
+    experience:String,
+    speciality:String,
+    serviceType:{
+        type:String,
+        enum:['online','offline','both']
+    },
+    servieDays:{
+        type:String,
+        enum:['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+    },
+    serviceTimes:[
+        
+    ],
     createddate:String,
     status:Boolean,
 })

@@ -11,6 +11,7 @@ const userSchema=mongoose.Schema({
     isAlreadySignUp:{
       type:Boolean,  
     },
+    password:String,
     lat:String,
     lng:String,
     deviceToken:String,

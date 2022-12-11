@@ -10,16 +10,22 @@ static async testController(req,res){
 
 static async login(req,res){
     try{
-        const {phone,type}=req.body;
-        if(phone===undefined || type===undefined){
-            res.json(validation("please provide proper value"));
-        }else{
-        userService.loginUser(phone,type);
-        res.json(success("success",{message:"opt Send to your Mobile no"},200));
+        const data=req.body;
+        if(data.phone===undefined || data.type===undefined || data.password===undefined){
+            return res.json(validation("please provide proper value"));
         }
+        const output =await userService.loginUser(data);
+        if (output.pop) {
+            res.json(success(`${output.message}`,output.data,200));
+        }else{
+            res.json(error(`${output.message}`,500));
+        }
+
+        // userService.loginUser(phone,type);
+        // res.json(success("success",{message:"opt Send to your Mobile no"},200));
         
-    }catch{
-        res.json(error("something went wrong",500));
+    }catch(err){
+        res.json(error("something went wrong"+err.message,500));
     }
 }
 
@@ -29,7 +35,7 @@ static async verifyOtp(req,res){
         if(otp===undefined || type===undefined || number===undefined){
             return res.json(validation("please provide proper value"));
         }else{
-            const output =await userService.verifyOTP(number,otp,type);
+            const output =await userService.verifyOTP(number,otp,type).lean();
             res.json(success("your otp result",{message:"otp verified Succesfully",result:output},200));
         }
     }catch(err){
@@ -48,8 +54,10 @@ static async resendOtp(req,res){
 
 static async home(req,res){
     try{
+        console.log(req.body);
+        console.log(req.user)
         const data=await userService.home();
-        res.json(success("homee page data",data,200));
+        res.json(success("home page data",data,200));
     }catch(err){
         res.json(error("Something went wrong"+err.message,500));
     }

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "my-chikitsak",
+  "private_key_id": "eab46e847a82f44064ae0e400024dca788f6a75a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCyw6jrYLBbC2j6\n7XSkaNt0eM+TIboO1EABuFxEuTI+QdG78aB6cdCrIN6tTVU5BFpMw9WI1ACLX0R2\nTYjRsTKq4ENjC/VDBDHMyoFEu0jXGyosfgmtQPgJZ1mwSc1vGdq9HGwAZY/BaCUg\nMz+lhn6EIB/DUP7qPTkbIdffwbfI6Fm+ONhw74F/0l4qjVwWAh9tb89OKm32bphv\nckoZp0oyJ4y7gcM4QeUpE4qNfzXumbfgwEo+3/foq80tmrM2RdFtzfrDwzxR63/5\nH0+iWgS5pbV3sTtYXmBHF5udlabCcI6irTcO0zZW9BU+Sdxgn9lpRChO+p5cxnRi\n2HWFFcNdAgMBAAECggEABRJ3IwKRzmuC9YeyRQ3ymBnrbdXJpS0Ridr0x0Bn9AtD\nC62d64t6K7jZiJpGnkEI3N+7mc/GGi5AT4kApk58TQvi7ZcDxPyD+zcNtukHdo7/\nQdbrqF5NC1tC2LUnXo0hvzbku5gmHYs6bnD1z9kCkvYkYJLWQMgu7B2oNeGVuN4O\ntWkWIsM8oVV1r0fU8BsIxEDmngM8jbbi2FSTTzFLqHqvE9gAeYc/v5D9zsL5USSw\n7IZoy30q+ynuuT0aPxPmp6RCgvaHxSDaN9/POPtPrhVrM05rCB3NOiz9lMLfdJEp\ndG0LQlYNJ7PrFcbkfFT6kouQAqABeM15YAfBUXtIcwKBgQDaUZ7L8Yk4+BECEk/8\noKtZmBvexmBX/istukt6qPXWW+ntgkuyM4Ey9N0HdIeK37MUxscpN/Jcrt5emCi8\nd05x2Eo92g0Rg+6pN1XhUXs3DhysLMhY73sVS4bLwBqMoAtiFMUAhNXPR9EHfl/c\nBRTzh1j1+M0yXKy5Mtn4F882MwKBgQDRnlRP1vnhv7TUP64qHop8ajJL9MbFyG5L\nFQz6Sbe8sjFK5Vu+njm9cxiEXt2jMd5MefP9unTxBKxWZhwyVTbgcElGfB6PE5BO\nXLtxphWTCVhC8ioGeZGs3sMqEvj5CFvyceQgUlPuJgyS2d5DX2b6mUdKin2IhlZr\neaFgRtnwLwKBgAuzBAd50hizcnXh9VdcZNJQTG4Lw23zuOyiZxkTpNjv5AFOUjAi\ngnHwnUeg/wJ6KmaaoGGdFefRlykKjmRLIHEJXjEiVkDyCQAYbwm8DBZPM0omvDXH\n35isi3Svvrx6dyGyazwz4iFRf+oe45Qu0YibYDEOPDDOtpLWHsgkvn3xAoGBAIP+\nozCzOh6BTSjqAI3dNW8qoAlcVV5t26XD16wzh1N3EbsLuj3J/KnjM+kGo6ID4Otf\nT9jR9JlgS/ULz22SYz/o9PtBZSzLMO9nTVE/OA6ir8VYIEZ7ftPQYiy4TbbjIKMG\nPJRtwxQPOZOvRVo/VOUwZ8f0dR/nF7wNlyS8+LdZAoGBAJrVhgaErfSVpnhKvnxg\nuf3O4Qw/0zPWVpn9rOufQdGECHbtRShhLnx6VSYRqm1Goc3Q/4kv2w1f+LQxWDS8\niLwJsizOdkDovRr7e9ublvfVDkZvN2+Z1nIDq89sG25/TpASg/ET0j2jt5PRJs8d\nbygGGm5474e7SZ9+XCTSTY6U\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-306do@my-chikitsak.iam.gserviceaccount.com",
+  "client_id": "114772888720071138097",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-306do%40my-chikitsak.iam.gserviceaccount.com"
+}

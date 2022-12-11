@@ -6,10 +6,8 @@ var userRoute=express.Router();
 
 userRoute.get('/',UserController.testController);
 
-
-userRoute.post('/login',UserController.login);
-userRoute.post('/resendOtp',UserController.resendOtp);
-userRoute.post('/verify_otp',UserController.verifyOtp);
+// userRoute.post('/resendOtp',UserController.resendOtp);
+// userRoute.post('/verify_otp',UserController.verifyOtp);
 
 userRoute.get('/home',UserController.home);
 userRoute.put('/common-details',UserController.saveLatLongAndDeviceToken);
