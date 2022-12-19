@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { authenticate } from './src/app/middlewares/authentication.mjs';
 import userRoute from './src/app/routes/userRoutes.mjs';
@@ -23,7 +24,6 @@ app.all('*',(req,res)=>{
         solution:"please check your url again"
     })
 })
-
 
 app.listen(port,()=>{
     console.log(`Server listening on port   ${port}`)

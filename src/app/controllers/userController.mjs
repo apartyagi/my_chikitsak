@@ -31,13 +31,18 @@ static async login(req,res){
 
 static async verifyOtp(req,res){
     try{
-        const {otp,type,number}=req.body;
-        if(otp===undefined || type===undefined || number===undefined){
+        const {otp,number}=req.body;
+        if(otp==undefined || number==undefined){
+            console.log("otp,6969");
             return res.json(validation("please provide proper value"));
-        }else{
-            const output =await userService.verifyOTP(number,otp,type).lean();
-            res.json(success("your otp result",{message:"otp verified Succesfully",result:output},200));
         }
+         const output =await userService.verifyOTPBusiness(number,otp);
+         if(output.pop){
+             res.json(success(`${output.message}`,output,200));
+         }
+         else{
+            res.json(error(`${output.message}`,206));
+         }
     }catch(err){
         res.json(error("Something went wrong",500));
     }
@@ -45,10 +50,39 @@ static async verifyOtp(req,res){
 
 static async resendOtp(req,res){
    try{
+    const request=req.body;
+    if(request.phone==undefined){
+        return res.json(validation("please provide proper value"));
+    }
+    const output=await userService.sendOTPToUser(request.phone);
+    if(output.pop){
+        res.json(success(`${output.message}`,output.data,200));
+    }else{
+        res.json(error(`${output.message}`,206));
+    }
 
    }catch(err) {
-
+    res.json(error(`something went wrong`,500));
    }
+}
+
+
+static async changePassword(req,res){
+    try {
+        const {oldPassword,newPassword,id}=req.body;
+        if(oldPassword==undefined || newPassword==undefined || id==undefined || oldPassword!=newPassword){
+            return res.json(validation("please provide proper value"));
+        }
+        const output=await userService.changePassword(newPassword,id);
+        if(output.pop){
+            res.json(success(`${output.message}`,200));
+        }else{
+            res.json(error(`${output.message}`,206));    
+        }
+
+    } catch (err) {
+        res.json(error(`something went worng ${err.message}`,500));
+    }
 }
 
 
@@ -65,12 +99,15 @@ static async home(req,res){
 
 static async saveLatLongAndDeviceToken(req,res){
     try{
-        const {id,lat,lng,token,type}=req.body;
-        const status=await userService.save_userDetails_latLngDevice(lat,lng,token,id);
-        if(status==true){
-            res.json(success("data save successfully",{status:true},200));
+        const {id,lat,lng,token,type,address}=req.body;
+        if(id==undefined || lat==undefined || token==undefined || address==undefined){
+            return res.json(validation("please provide all parameters"));
+        }
+        const output=await userService.save_userDetails_latLngDevice(lat,lng,token,id,address);
+        if(output.pop==true){
+            res.json(success(`${output.message}`,{status:true},200));
         }else{
-            res.json(error("check your user id and value",400));    
+            res.json(error(`${output.message}`,400));    
         }
     
     }catch(err){
@@ -110,14 +147,10 @@ static async getAllSubCategory(req,res){
 }
 
 
-
 static async getAllDoctorsNearby(req,res){
 
 }
 
-static async getTopFive1ClientReview(req,res){
-
-}
 
 static async getTotalNumberOfDoctorWorkingWithUs(req,res){
 
@@ -139,10 +172,17 @@ static async bookLabtest(req,res){
 
 static async get_my_profile(req,res){
 try {
-    
+    const {id}=req.user;
+    const output = await userService.getMyProfile(id);
+    if(output.pop){
+        res.json(success(`${output.message}`,output.data,200));
+    }else{
+        res.json(error(`${output.message}`,206));
+    }
 } catch (error) {
-    
+    res.json(error("Something went wrong"+err.message,500));
 }
+
 }
 
 static async update_my_profile(req,res){

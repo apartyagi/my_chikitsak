@@ -10,8 +10,9 @@ const categorySchema=mongoose.Schema({
         require:true,
         type:String
     },
+    bgColor:String,
     subcategory:{
-        type:[{name:String,logo:String}]
+        type:[{name:String,logo:String,bgColor:String}]
     },
     createdAt:{
         type:Date,
