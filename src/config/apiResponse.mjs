@@ -1,4 +1,4 @@
-  const success = (message, results, statusCode) => {
+  const Success = (message, results, statusCode) => {
     return {
       message,
       error: false,
@@ -8,7 +8,7 @@
   };
   
 
-  const error = (message, statusCode) => {
+  const Error = (message, statusCode) => {
 
     const codes = [200, 201, 400, 401, 404, 403, 422, 500];
   
@@ -25,7 +25,7 @@
     };
   };
 
-  const validation = (errors) => {
+  const Validation = (errors) => {
     return {
       message: "Validation errors",
       error: true,
@@ -34,4 +34,4 @@
     };
   };
 
-  export {success,error,validation};
+  export {Success,Error,Validation};

@@ -1,15 +1,21 @@
 import express from "express";
 const DCredrouter=express.Router();
+import doctorController from "../controllers/doctorController.mjs";
 
 
 
-DCredrouter.post('/sign_up',(req,res)=>{
-  res.json({op:"inside doctor signup"}); 
-})
+DCredrouter.post('/login',doctorController.login);
+DCredrouter.post('/resendOtp',doctorController.ResendOtp);
+DCredrouter.post('/verify',doctorController.verifyOtp);
+DCredrouter.post('/sign_up',doctorController.signUP);
+DCredrouter.post('/service_type',doctorController.serviceType);
+DCredrouter.post('/time_slot',doctorController.timeSlots);
+DCredrouter.post('/range',doctorController.range);
 
-DCredrouter.post('/login',(req,res)=>{
-    res.json({op:"inside doctor login"});
-});
+
+
+
+
 
 
 export default DCredrouter;

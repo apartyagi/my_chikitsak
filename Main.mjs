@@ -2,6 +2,7 @@
 import express from 'express';
 import { authenticate } from './src/app/middlewares/authentication.mjs';
 import userRoute from './src/app/routes/userRoutes.mjs';
+import doctorRoute from "./src/app/routes/doctorRoutes.mjs";
 import "./src/config/mongodb.mjs";
 const app=express();
 import UCredrouter from './src/app/services/Usercredential.mjs';
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/user',UCredrouter);
 app.use('/doctor',DCredrouter);
 app.use('/api/v1/users',authenticate,userRoute);
+app.use('/api/v1/doctor',authenticate,doctorRoute);
 
 
 
@@ -26,5 +28,5 @@ app.all('*',(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log(`Server listening on port   ${port}`)
+    console.log(`Server listening on port ${port}`)
 })

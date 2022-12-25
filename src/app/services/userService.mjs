@@ -17,7 +17,9 @@ let RESPONSE=(pop,message,data)=>{
 }
 
 
-class UserService{
+class UserService {
+
+
 
 async findUserById(UID){
     try{
@@ -34,15 +36,19 @@ async findUserById(UID){
 }
 
 
-async SignUp(data){
+async SignUp(id,data){
     try{
-        const {phone,password}=req.body;
-        const securePassword=await hash(password,10)
-        const ty= await userModel.create({phone:phone,password:securePassword,status:false,verified:false});
-
+        const {name,password,dob,email,gender}=data;
+        const isuserVerified=await userModel.findOne({_id:id,verified:true,status:true});
+        if(isuserVerified===null){
+            return RESPONSE(false,"user is not verified Or Already Registered",206);
+        }
+        const securePassword=await hash(password,10);
+        const ty= await userModel.findOneAndUpdate({_id:id},{$set:{name:name,password:securePassword,status:true,dob:dob,email,gender}});
+        return RESPONSE(true,"registered",ty);
 
     }catch(err){
-        return {pop:false,message:"somrting wrong with your value"};
+        return RESPONSE(false,"somrting wrong with your value");
     }
 
 }
@@ -73,7 +79,7 @@ async verifyOTPBusiness(phone,otp){
         if(isExist===null){
           return RESPONSE(false,"Invalid details");
         }else{
-            const result=await userModel.findOneAndUpdate({_id:isExist._id},{$set:{otp:0}},{new:true});
+            const result=await userModel.findOneAndUpdate({_id:isExist._id},{$set:{otp:0,verified:true}},{new:true});
             return RESPONSE(true,"Otp Verification Success",result);
         }
     
@@ -210,6 +216,29 @@ async sendOTPToUser(phone){
 }
 
 
+async otpRegistrationForSignUp(phone){
+    try {
+        const uExist=await userModel.findOne({phone:phone});
+    if(uExist==null){
+        const OTP=this.genrateOtp();
+        const reSet=await userModel.create({phone:phone,otp:OTP,status:false,verified:false});
+        let oo={
+            id:reSet._id,
+            phone:reSet.phone,
+            otp:reSet.otp
+        }
+        return RESPONSE(true,"otp send succesfully to your number",oo);
+    }
+    else{
+        return RESPONSE(false,"Number already resigtered");
+        }
+    }
+     catch (err) {
+         return RESPONSE(false,"Something Went Wrong");
+    }
+}
+
+
 
 
 async getMyProfile(id){
@@ -225,6 +254,19 @@ async getMyProfile(id){
         return RESPONSE("false","something went wrong while fetch your profile");
     }
 }
+
+
+async updateMYProfile(id,user){
+    try {
+        const myupdProfile=await userModel.findOneAndUpdate({_id:id},{$set:user},{new:true}).select('name phone dob email gender image');
+        return RESPONSE(true,"profile updated succesfully",myupdProfile,200);
+    } catch (err) {
+        return RESPONSE(false,"something has gone wrong.",500);
+    }
+}
+
+
+
 
 }
 

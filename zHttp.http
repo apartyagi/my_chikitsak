@@ -1,7 +1,52 @@
-@dev=http://127.0.0.1:3000/api/v1
+@dev=http://127.0.0.1:3001/api/v1/users
+@sijorA=https://sijorsindia.com/api/
+@sijorH=https://quiz.infinixsys.com/api/
 
-GET {{dev}}/users
+@sijorAW=http//3.7.116.5/api/
+
+
+
+
+
+
+
+
+GET {{sijorA}}quizlist
+###
+
+GET {{sijorH}}user-details
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTQiLCJtb2JpbGUiOiI3MjUwMDgxNTcxIiwiZW1haWwiOiIiLCJ0aW1lc3RhbXAiOiIyMDIyLTEwLTI4IDEyOjUzOjQ1In0.amqYvahjzP8MC3c6P3i7kvRoqjmV_hzomqHAfR2dHKY
+
+###
+GET {{sijorA}}user-details
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTQiLCJtb2JpbGUiOiI3MjUwMDgxNTcxIiwiZW1haWwiOiIiLCJ0aW1lc3RhbXAiOiIyMDIyLTEwLTI4IDEyOjUzOjQ1In0.amqYvahjzP8MC3c6P3i7kvRoqjmV_hzomqHAfR2dHKY
+
+
+###
+POST {{sijorH}}register
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTQiLCJtb2JpbGUiOiI3MjUwMDgxNTcxIiwiZW1haWwiOiIiLCJ0aW1lc3RhbXAiOiIyMDIyLTEwLTI4IDEyOjUzOjQ1In0.amqYvahjzP8MC3c6P3i7kvRoqjmV_hzomqHAfR2dHKY
+
+
+###
+POST {{sijorA}}register
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTQiLCJtb2JpbGUiOiI3MjUwMDgxNTcxIiwiZW1haWwiOiIiLCJ0aW1lc3RhbXAiOiIyMDIyLTEwLTI4IDEyOjUzOjQ1In0.amqYvahjzP8MC3c6P3i7kvRoqjmV_hzomqHAfR2dHKY
+
+###
+POST {{sijorH}}register
+
+
+
+
+
+
+
+
+###
+GET {{dev}}/home
 Accept: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOTU4NDBkNTkzYTg1OTUxMzY1OTg0YSIsImlhdCI6MTY3MTQ4NjcyOH0.kMnuB8yG_ak5CCPYS-JG68iZH9DqVIKySki1NY8CguM
+
 
 ###
 

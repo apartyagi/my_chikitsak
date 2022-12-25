@@ -14,6 +14,10 @@ userRoute.get('/get_all_category',UserController.getAllCategory);
 userRoute.get('/get_sub_cat',UserController.getAllSubCategory);
 
 
+userRoute.get('/get_all_category_online',UserController.getAllCategoryOnline);
+userRoute.get('/get_sub_cat_online',UserController.getAllSubCategoryOnline);
+
+
 
 userRoute.get('/avilable_doc_home',UserController.bookHomeVisit);
 userRoute.get('/avilable_doc_online',UserController.bookOnlineConsulat);
@@ -29,7 +33,7 @@ userRoute.post('book_lab_test',UserController.bookLabtest);
 
 
 userRoute.get('/my_profile',UserController.get_my_profile);
-userRoute.put('/my_profile',UserController.update_my_profile);
+userRoute.put('/my_profile/:userId',UserController.update_my_profile);
 
 
 
