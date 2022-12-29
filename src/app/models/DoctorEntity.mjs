@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
+const timeSlots=mongoose.Schema({
+    
+})
+
 const doctorSchema=mongoose.Schema({
     phone:{
         unique: true,
@@ -31,6 +35,9 @@ const doctorSchema=mongoose.Schema({
     ],
     createddate:String,
     status:Boolean,
+    verified:Boolean,
+    reverified:Boolean,
+    profileCompleted:Boolean,
 })
 
 const doctorModel=mongoose.model('Doctor',doctorSchema);

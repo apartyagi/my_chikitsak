@@ -8,9 +8,7 @@ DCredrouter.post('/login',doctorController.login);
 DCredrouter.post('/resendOtp',doctorController.ResendOtp);
 DCredrouter.post('/verify',doctorController.verifyOtp);
 DCredrouter.post('/sign_up',doctorController.signUP);
-DCredrouter.post('/service_type',doctorController.serviceType);
-DCredrouter.post('/time_slot',doctorController.timeSlots);
-DCredrouter.post('/range',doctorController.range);
+DCredrouter.post('/change_password',doctorController.changePassword);
 
 
 

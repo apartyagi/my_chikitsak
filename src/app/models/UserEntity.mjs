@@ -26,8 +26,12 @@ const userSchema=mongoose.Schema({
     },
     status:Boolean,
     verified:Boolean,
+    reverified:Boolean,
+    profileCompleted:Boolean,
 })
 
 const userModel=mongoose.model('User',userSchema);
+
+userSchema.virtual('id').get(function() { return this._id; });
 
 export default userModel;

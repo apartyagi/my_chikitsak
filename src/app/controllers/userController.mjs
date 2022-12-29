@@ -17,7 +17,6 @@ static async SignUpC(req,res){
             return Validation("please provide proper value");
         }
         const output =await userService.SignUp(id,req.body);
-        console.log(output);
         if(output.pop){
             res.json(Success(`${output.message}`,output.data,200));
         }else{
@@ -41,10 +40,6 @@ static async login(req,res){
         }else{
             res.json(Error(`${output.message}`,500));
         }
-
-        // userService.loginUser(phone,type);
-        // res.json(success("success",{message:"opt Send to your Mobile no"},200));
-        
     }catch(err){
         res.json(Error("something went wrong"+err.message,500));
     }
@@ -59,7 +54,7 @@ static async verifyOtp(req,res){
         }
          const output =await userService.verifyOTPBusiness(number,otp);
          if(output.pop){
-             res.json(Success(`${output.message}`,output,200));
+             res.json(Success(`${output.message}`,output.data,200));
          }
          else{
             res.json(Error(`${output.message}`,206));
@@ -178,7 +173,7 @@ static async getAllSubCategory(req,res){
 
 static async getAllCategoryOnline(req,res){
     try{
-        const data=await userService.get_all_category();
+        const data=await userService.get_all_categoryOnline();
         if(data.length>0){
             return res.json(Success("list of all category",data,200));
         }else{
@@ -196,7 +191,7 @@ static async getAllSubCategoryOnline(req,res){
         if(categoryId==undefined){
             return res.json(Validation("please provide proper fields"));
         }
-        const data=await userService.get_all_subcategory(categoryId);
+        const data=await userService.get_all_subcategoryOnline(categoryId);
         if(data.length>0){
             return res.json(Success("list of all category",data,200));
         }else{
@@ -218,6 +213,28 @@ static async getTotalNumberOfDoctorWorkingWithUs(req,res){
 }
 
 static async bookHomeVisit(req,res){
+    try {
+        const userId=req.user;
+        const data=[
+            {
+                image:'https://images.pexels.com/photos/14211152/pexels-photo-14211152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                name:'devid parker',
+                speciality:'Orthographic',
+                price:'200',
+                rating:4
+            },
+            {
+                image:'https://images.pexels.com/photos/14211152/pexels-photo-14211152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                name:'devid mathu',
+                speciality:'Orthographic',
+                price:'200',
+                rating:4
+            }
+        ]
+        res.json(Success("list of avilable doctors",data,200));       
+    } catch (error) {
+        res.json(Error("something went wrong",500));
+    }
 
 }
 
