@@ -2,7 +2,13 @@
 import express from "express";
 import UserController from "../controllers/userController.mjs";
 var userRoute=express.Router();
+userRoute.use((req,res,next)=>{
+    if(req.user.type!='user' || req.user.type==undefined || req.user.type==null){
+       return  res.status(401).json({warning:"you are not a user i know"});
+    }
+    next();
 
+})
 
 userRoute.get('/',UserController.testController);
 
@@ -36,6 +42,11 @@ userRoute.get('/my_profile',UserController.get_my_profile);
 userRoute.put('/my_profile/:userId',UserController.update_my_profile);
 
 
+
+
+userRoute.get('/privacy_policy',UserController.getPrivacyPolicy);
+userRoute.get('/cancellation_policy',UserController.getCancellationPolicy);
+userRoute.get('/terms_condition',UserController.getTermsAndConditionsPolicy);
 
 
 export default userRoute;

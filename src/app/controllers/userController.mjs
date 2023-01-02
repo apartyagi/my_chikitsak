@@ -113,7 +113,7 @@ static async home(req,res){
         console.log(req.body);
         console.log(req.user)
         const data=await userService.home();
-        res.json(Success("home page data",data,200));
+        res.json(Success("home page data",data.data,200));
     }catch(err){
         res.json(Error("Something went wrong"+err.message,500));
     }
@@ -289,6 +289,45 @@ try {
 }
 
 
+
+
+
+static async getPrivacyPolicy(req, res) {
+    try {
+        const output = await userService.getPrivacyPolicyBL();
+        if(output.pop){
+            res.json(Success(`${output.message}`,output.data,200));
+        }else{
+            res.json(Error(`${output.message}`,206));
+        }
+    } catch (er) {
+        res.json(Error("Something went wrong"+err.message,500));
+    }
+}
+static async getCancellationPolicy(req, res) {
+    try {
+        const output = await userService.getCancellationPolicyBL();
+        if(output.pop){
+            res.json(Success(`${output.message}`,output.data,200));
+        }else{
+            res.json(Error(`${output.message}`,206));
+        }
+    } catch (er) {
+        res.json(Error("Something went wrong"+err.message,500));
+    }
+}
+static async getTermsAndConditionsPolicy(req, res) {
+    try {
+        const output = await userService.getTermsAndConditionsBL();
+        if(output.pop){
+            res.json(Success(`${output.message}`,output.data,200));
+        }else{
+            res.json(Error(`${output.message}`,206));
+        }
+    } catch (er) {
+        res.json(Error("Something went wrong"+err.message,500));
+    }
+}
 
 
 

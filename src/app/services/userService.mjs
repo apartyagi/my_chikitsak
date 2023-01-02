@@ -7,6 +7,7 @@ import doctorModel from "../models/DoctorEntity.mjs";
 import { hash,compare } from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import containerModel from "../models/Container.mjs";
 dotenv.config();
 
 const RESPONSE=(pop,message,data)=>{
@@ -70,7 +71,7 @@ async loginUser(data){
             return RESPONSE(false,"no account found");
         }
         else{
-            const user={id:result.id};
+            const user={id:result.id,type:'user'};
             const accessToken=jwt.sign(user,process.env.JWT_SECRET_KEY);
             result.accessToken=accessToken;
             result.refreshToken="sajbfjkabfjbasjfasf6sa5f6sa1f6asdmnakjdbhwdwq546d489wq4$%^";
@@ -115,11 +116,17 @@ async changePassword(newPassword,id){
 
 
 async home(){
-    const activeDoctor=4;
-    return {
-        activeDoctor:4,
-        review:review
-    }
+    const activeDoctor=await doctorModel.count();
+    let isActiveMeetings=true;
+    const activeMeeting=[
+        {
+        id:'ajdbjd51515',
+        name:"Vinnet Sharma",
+        date:"Wednesday 25 January",
+        time:"08:00 AM",
+        img:"https://cdn.pixabay.com/photo/2018/08/26/23/55/woman-3633737__480.jpg"
+    }];
+    return RESPONSE(true,'home page for user',{activeDoctor,review,activeMeeting,isActiveMeetings});
 }
 
 async save_userDetails_latLngDevice(lat,lng,token,id,address){
@@ -312,6 +319,40 @@ async updateMYProfile(id,user){
     }
 }
 
+
+
+
+
+
+
+
+async getPrivacyPolicyBL(){
+    try {
+       const data=await containerModel.findOne({UID:1,type:'privacy',whom:'user'},{_id:0,body:1,id:"$_id"})
+       return RESPONSE(true,'here is privacy policy',data);
+    } catch (error) {
+        return RESPONSE(false,"somrthing wrong happened");
+    }
+}
+
+async getCancellationPolicyBL(){
+    try {
+       const data=await containerModel.findOne({UID:2,type:'cancel',whom:'user'},{_id:0,body:1,id:"$_id"})
+       return RESPONSE(true,'here is cancellation policy',data);
+    } catch (error) {
+        return RESPONSE(false,"somrthing wrong happened");
+    }
+}
+
+
+async getTermsAndConditionsBL(){
+    try {
+       const data=await containerModel.findOne({UID:3,type:'terms',whom:'user'},{_id:0,body:1,id:"$_id"})
+       return RESPONSE(true,'here is terms and conditions',data);
+    } catch (error) {
+        return RESPONSE(false,"somrthing wrong happened");
+    }
+}
 
 
 
